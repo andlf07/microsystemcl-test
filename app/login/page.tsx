@@ -64,7 +64,7 @@ const Page = () => {
                 </Button>
                 <Button fullWidth onClick={handleGoogleSignIn}>
                   <GoogleIcon sx={{ fontSize: '1.25rem' }} />
-                  GOOGLE SIGN IN
+                  GOOGLE SIGNIN
                 </Button>
               </StyledLoginInputBox>
               <Box gap="10px">
