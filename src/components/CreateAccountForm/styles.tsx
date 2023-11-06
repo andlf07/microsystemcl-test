@@ -19,7 +19,9 @@ export const StyledBox = styled(({ ...otherProps }) => <Box {...otherProps} comp
   }
 `;
 
-export const StyledCreateAccountButton = styled(({ ...otherProps }) => <Button {...otherProps} />)`
+export const StyledCreateAccountButton = styled(({ ...otherProps }) => (
+  <Button fullWidth {...otherProps} />
+))`
   background-color: #fff;
   color: #555273;
   font-size: 1rem;
@@ -34,5 +36,6 @@ export const StyledCreateAccountButton = styled(({ ...otherProps }) => <Button {
 
   @media (max-width: 768px) {
     width: 70%;
+    font-size: 0.95rem;
   }
 `;

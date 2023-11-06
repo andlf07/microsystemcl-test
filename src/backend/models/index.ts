@@ -1,8 +1,8 @@
 import { Sequelize } from 'sequelize';
-import { UserModelInitializer } from './User';
 import { PasswordSaltModelInitializer } from './PasswordSalt';
-import { InstanceModels } from './interface';
 import { ResetPasswordCodeModelInitializer } from './ResetPasswordCode';
+import { UserModelInitializer } from './User';
+import { InstanceModels } from './interface';
 
 export const instanceModels = (client: Sequelize): InstanceModels => {
   const userModel = new UserModelInitializer(client);
@@ -13,10 +13,11 @@ export const instanceModels = (client: Sequelize): InstanceModels => {
 };
 
 export const initModels = (instances: InstanceModels): void => {
-  const { passwordSaltModel, userModel } = instances;
+  const { passwordSaltModel, userModel, resetPasswordCode } = instances;
 
   userModel.initialize();
   passwordSaltModel.initialize();
+  resetPasswordCode.initialize();
 };
 
 export const modelAssosiations = (instances: InstanceModels): void => {

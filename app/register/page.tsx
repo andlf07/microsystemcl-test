@@ -1,14 +1,11 @@
 'use client';
-import { CreateAccountForm, Layout } from '~/components';
-import { StyledBox } from './styles';
+import { Register } from '~/components';
 
 const Page = () => {
   return (
-    <Layout>
-      <StyledBox>
-        <CreateAccountForm />
-      </StyledBox>
-    </Layout>
+    <>
+      <Register />
+    </>
   );
 };
 

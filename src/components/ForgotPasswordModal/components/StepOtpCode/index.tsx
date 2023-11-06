@@ -1,8 +1,8 @@
 import { MuiOtpInput } from 'mui-one-time-password-input';
 import React from 'react';
-import { StepForgotPassword } from '..';
 import { Control, Controller } from 'react-hook-form';
-import { Stack } from '@mui/material';
+import { StepForgotPassword } from '..';
+import { StyledOtpBox } from './styles';
 
 interface Props {
   control: Control<any, any>;
@@ -17,7 +17,7 @@ const StepOtpCode: React.FC<Props> = ({ control, onSubmit, email }) => {
       subTitle={`Te hemos enviado un código a ${email}`}
       onSubmit={onSubmit}
     >
-      <Stack width="70%" alignSelf="center">
+      <StyledOtpBox>
         <Controller
           name="otpCode"
           control={control}
@@ -26,7 +26,7 @@ const StepOtpCode: React.FC<Props> = ({ control, onSubmit, email }) => {
             <MuiOtpInput length={5} sx={{ gap: '5px' }} onChange={onChange} value={value} />
           )}
         />
-      </Stack>
+      </StyledOtpBox>
     </StepForgotPassword>
   );
 };

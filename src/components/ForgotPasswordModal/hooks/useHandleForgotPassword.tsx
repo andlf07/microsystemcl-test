@@ -1,8 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useForgotPasswordModal } from '~/contexts/hooks';
-import { useSendEmailRecovery, useVerifyPasswordCode } from '.';
 import { useNotification } from '~/hooks';
+import { useSendEmailRecovery, useVerifyPasswordCode } from '.';
 
 const useHandleForgotPassword = () => {
   const { handleModalIsOpen, isModalOpen } = useForgotPasswordModal();

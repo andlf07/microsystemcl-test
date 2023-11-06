@@ -19,7 +19,7 @@ const CreateAccountForm = () => {
           </Box>
           <AccountForm control={control} getValues={getValues} errors={errors} />
 
-          <StyledCreateAccountButton type="submit" variant="contained" size="large">
+          <StyledCreateAccountButton type="submit" variant="contained">
             CREAR CUENTA
             <ArrowForwardIosIcon sx={{ fontSize: '0.95rem' }} />
           </StyledCreateAccountButton>

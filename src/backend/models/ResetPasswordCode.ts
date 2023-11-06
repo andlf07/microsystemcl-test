@@ -1,13 +1,13 @@
-import { DataTypes, Model, Sequelize, Optional } from 'sequelize';
+import { DataTypes, Model, Optional, Sequelize } from 'sequelize';
 import { ModelInitializer } from './interface';
 
 export interface ResetPasswordCodeAttributes {
-  id?: number;
+  id?: string;
   code?: number;
   email?: string;
   enabled?: boolean;
-  created_at?: string;
-  updated_at?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface ResetPasswordCodeCreationAttributes
@@ -17,12 +17,12 @@ export class ResetPasswordCodeModel extends Model<
   ResetPasswordCodeAttributes,
   ResetPasswordCodeCreationAttributes
 > {
-  public id!: number;
+  public id!: string;
   public code!: number;
   public email!: string;
   public enabled!: boolean;
-  public readonly created_at!: string;
-  public readonly updated_at!: string;
+  public readonly createdAt!: string;
+  public readonly updatedAt!: string;
 }
 
 export class ResetPasswordCodeModelInitializer implements ModelInitializer {

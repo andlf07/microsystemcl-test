@@ -1,13 +1,16 @@
 import { closeConnection, openConnection } from '../database/dbManager';
 import { IPagination } from '../interface/Pagination';
-import { PasswordSaltModel } from '../models/PasswordSalt';
+import { ResetPasswordCodeModel } from '../models/ResetPasswordCode';
 
-export const getPasswordSalt = async (params: any, pagination: IPagination): Promise<any> => {
+export const getAllResetPasswordCodes = async (
+  params: any,
+  pagination: IPagination
+): Promise<any> => {
   const offset = (pagination.page - 1) * pagination.pageSize;
   try {
     await openConnection();
 
-    const { rows, count } = await PasswordSaltModel.findAndCountAll({
+    const { rows, count } = await ResetPasswordCodeModel.findAndCountAll({
       where: params,
       limit: pagination.pageSize,
       offset,
@@ -30,17 +33,16 @@ export const getPasswordSalt = async (params: any, pagination: IPagination): Pro
   }
 };
 
-export const createPasswordSalt = async (data: any): Promise<PasswordSaltModel> => {
+export const createResetPasswordCode = async (data: any): Promise<ResetPasswordCodeModel> => {
   try {
     await openConnection();
 
-    const create = await PasswordSaltModel.create(data);
+    const create = await ResetPasswordCodeModel.create(data);
 
     await closeConnection();
 
     return create;
   } catch (error: any) {
-    console.log(error);
     if (error.name === 'SequelizeForeignKeyConstraintError')
       throw new Error(
         JSON.stringify({
@@ -58,17 +60,17 @@ export const createPasswordSalt = async (data: any): Promise<PasswordSaltModel> 
   }
 };
 
-export const updatePasswordSalt = async (
-  passwordSaltId: string,
+export const updateResetPasswordCode = async (
+  userId: string,
   data: any
-): Promise<PasswordSaltModel> => {
+): Promise<ResetPasswordCodeModel> => {
   try {
     await openConnection();
 
-    const update = await PasswordSaltModel.update(
+    const update = await ResetPasswordCodeModel.update(
       { ...data },
       {
-        where: { id: passwordSaltId },
+        where: { id: userId },
         returning: true,
       }
     );
@@ -77,7 +79,6 @@ export const updatePasswordSalt = async (
 
     return update[1][0];
   } catch (error: any) {
-    console.log(error, 'test');
     if (error.name === 'SequelizeForeignKeyConstraintError')
       throw new Error(
         JSON.stringify({
@@ -95,60 +96,57 @@ export const updatePasswordSalt = async (
   }
 };
 
-export const deletePasswordSalt = async (passwordSaltId: string): Promise<any> => {
+export const deleteResetPasswordCode = async (userId: string): Promise<any> => {
   try {
     await openConnection();
 
-    const deleteOne = await PasswordSaltModel.destroy({
-      where: { id: passwordSaltId },
+    const deleteOne = await ResetPasswordCodeModel.destroy({
+      where: { id: userId },
     });
 
     await closeConnection();
 
     return deleteOne;
   } catch (error) {
-    throw new Error(`Error on delete: UserModel`);
+    throw new Error(`Error on delete: ResetPasswordCodeModel`);
   }
 };
 
-export const findOrCreatePasswordSalt = async (data: any): Promise<PasswordSaltModel> => {
+export const getOneResetPasswordCode = async (
+  userId: string
+): Promise<ResetPasswordCodeModel | null> => {
   try {
     await openConnection();
 
-    const find = await PasswordSaltModel.findOne({ where: { user_id: data.user_id } });
+    const getOne = await ResetPasswordCodeModel.findOne({
+      where: { id: userId },
+      include: { all: true },
+    });
 
-    if (find) {
-      const update = await PasswordSaltModel.update(
-        { ...data },
-        {
-          where: { id: find.id },
-          returning: true,
-        }
-      );
-      await closeConnection();
+    await closeConnection();
 
-      return update[1][0];
-    } else {
-      const create = await PasswordSaltModel.create(data);
+    return getOne;
+  } catch (error) {
+    console.log(error);
+    throw new Error(`Error on getOne: ResetPasswordCodeModel`);
+  }
+};
 
-      await closeConnection();
+export const getResetPasswordCodeByCode = async (
+  code: number
+): Promise<ResetPasswordCodeModel | null> => {
+  try {
+    await openConnection();
 
-      return create;
-    }
+    const getCodeByCode = await ResetPasswordCodeModel.findOne({
+      where: { code },
+      include: { all: true },
+    });
+
+    await closeConnection();
+
+    return getCodeByCode;
   } catch (error: any) {
-    if (error.name === 'SequelizeForeignKeyConstraintError')
-      throw new Error(
-        JSON.stringify({
-          type: error.name,
-          message: error.parent.detail,
-        })
-      );
-
-    throw new Error(
-      JSON.stringify({
-        type: error.name,
-        message: error.errors[0].message,
-      })
-    );
+    throw new Error(`Error on getResetPasswordCodeByEmail: ${error}`);
   }
 };

@@ -4,5 +4,7 @@ export { default as ForgotPasswordModal } from './ForgotPasswordModal';
 export { default as FormInputController } from './FormInputController';
 export { default as Image } from './Image';
 export { default as Layout } from './Layout';
+export { default as Login } from './Login';
 export { default as Providers } from './Providers';
+export { default as Register } from './Register';
 export * from './mui';

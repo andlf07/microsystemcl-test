@@ -6,7 +6,7 @@ const useSendEmailRecovery = () => {
 
   const sendEmail = async (data: { email: string }) =>
     await requests({
-      url: config.SEND_EMAIL_CODE_ENDPOINT,
+      url: config.HOST_BASE + config.SEND_EMAIL_CODE_ENDPOINT,
       method: 'POST',
       data: { email: data.email },
       headers: { 'Content-Type': 'application/json' },

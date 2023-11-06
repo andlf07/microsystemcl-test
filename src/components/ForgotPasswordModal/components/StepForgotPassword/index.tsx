@@ -1,6 +1,11 @@
 import React, { ReactNode } from 'react';
-import { Button, Text } from '~/components';
-import { StyledChildrenBox, StyledChildrenTitleBox } from './styles';
+import { Button } from '~/components';
+import {
+  StyledChildrenBox,
+  StyledChildrenTitleBox,
+  StyledSubTitleText,
+  StyledTitleText,
+} from './styles';
 
 interface Props {
   children: ReactNode;
@@ -13,16 +18,14 @@ const StepForgotPassword: React.FC<Props> = ({ children, title, subTitle, onSubm
   return (
     <>
       <StyledChildrenTitleBox>
-        <Text fontSize="2rem" fontWeight="600" textAlign="center">
-          {title}
-        </Text>
-        <Text fontSize="1.1rem" textAlign="center">
-          {subTitle}
-        </Text>
+        <StyledTitleText>{title}</StyledTitleText>
+        <StyledSubTitleText>{subTitle}</StyledSubTitleText>
       </StyledChildrenTitleBox>
       <StyledChildrenBox onSubmit={onSubmit}>
         {children}
-        <Button type="submit">Restablecer contraseña</Button>
+        <Button type="submit">
+          <StyledSubTitleText>Restablecer contraseña</StyledSubTitleText>
+        </Button>
       </StyledChildrenBox>
     </>
   );

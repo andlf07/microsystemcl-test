@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Box } from '~/components';
+import { Box, Text } from '~/components';
 
 export const StyledChildrenBox = styled(({ ...otherProps }) => (
   <Box {...otherProps} component="form" />
@@ -11,7 +11,7 @@ export const StyledChildrenBox = styled(({ ...otherProps }) => (
   @media (max-width: 768px) {
     width: 100%;
     justify-content: center;
-    height: 40%;
+    height: 80%;
   }
 `;
 
@@ -21,5 +21,24 @@ export const StyledChildrenTitleBox = styled(({ ...otherProps }) => <Box {...oth
 
   @media (max-width: 768px) {
     height: 30%;
+  }
+`;
+
+export const StyledTitleText = styled(({ ...otherProps }) => <Text {...otherProps} />)`
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+`;
+
+export const StyledSubTitleText = styled(({ ...otherProps }) => <Text {...otherProps} />)`
+  font-size: 1.1rem;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
   }
 `;
