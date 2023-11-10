@@ -10,8 +10,6 @@ export const POST = async (req: NextRequest) => {
 
   const data: any = await req.json();
 
-  console.log(data);
-
   try {
     const getByEmail = await getUserByEmail(data.email);
 

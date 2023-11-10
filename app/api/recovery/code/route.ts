@@ -32,7 +32,7 @@ export const POST = async (req: NextRequest) => {
 
     if (createCode) {
       const emailPayload = {
-        subject: 'Recuperacion de clave Closeup',
+        subject: 'Recuperacion de clave.',
         text: `Para crear una nueva clave debes ingresar el siguiente codigo: ${createCode.code}
         `,
 
