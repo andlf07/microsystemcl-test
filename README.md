@@ -9,8 +9,6 @@ El despliegue fue hecho en AWS Amplify. Y utilize el servicio de Azure Email Com
 
 URL: https://master.d3dchcnaqnqxse.amplifyapp.com/login
 
-DB MODEL: https://dbdiagram.io/d/readconnect-654e7aee7d8bbd6465f32476
-
 
 ## Clonar el Proyecto desde GitHub
 
@@ -47,28 +45,28 @@ DB MODEL: https://dbdiagram.io/d/readconnect-654e7aee7d8bbd6465f32476
 3. **Agregar las variables de entorno:**
    - Crea un archivo .env en la raiz del proyecto y sus valores
         ```bash
-    NEXT_PUBLIC_HOST_BASE=http://localhost:3000
-    NEXT_PUBLIC_LOGIN_ENDPOINT=/api/login
-    NEXT_PUBLIC_GOOGLE_CREATE_USER_ENDPOINT=/api/users/provider/google
-    NEXT_PUBLIC_GEN_PROVIDER_TOKEN_LOGIN_ENDPOINT=/api/users/provider/token
-    NEXT_PUBLIC_USERS_ENDPOINT=/api/users
-    NEXT_PUBLIC_SEND_EMAIL_RECOVERY_ENDPOINT=/api/recovery/code
-    NEXT_PUBLIC_VERIFY_RECOVERY_CODE_ENDPOINT=/api/recovery/verify
-    MODE_ENV=
-    NEXTAUTH_SECRET=
-    NEXTAUTH_URL=http://localhost:3000/api/auth/
-    <!--AZURE EMAIL COMMUNICATION SERVICE-->
-    NEXT_PUBLIC_AZURE_EMAIL_STRING= # String endpoint proporcionado por azure
-    NEXT_PUBLIC_AZURE_EMAIL_SENDER= # Email sender proporcionado por azure
-    <!--GOOGLE SIGNIN PROVIDER--> # Credenciales de google para signin.
-    GOOGLE_CLIENT_ID=
-    GOOGLE_CLIENT_SECRET=
-    <!--Database credentials--> # Credenciales de la base de datos postgres
-    DB_NAME=
-    DB_DOMAIN=
-    DB_PORT=
-    DB_USER=
-    DB_PASSWORD=
+        NEXT_PUBLIC_HOST_BASE=http://localhost:3000
+        NEXT_PUBLIC_LOGIN_ENDPOINT=/api/login
+        NEXT_PUBLIC_GOOGLE_CREATE_USER_ENDPOINT=/api/users/provider/google
+        NEXT_PUBLIC_GEN_PROVIDER_TOKEN_LOGIN_ENDPOINT=/api/users/provider/token
+        NEXT_PUBLIC_USERS_ENDPOINT=/api/users
+        NEXT_PUBLIC_SEND_EMAIL_RECOVERY_ENDPOINT=/api/recovery/code
+        NEXT_PUBLIC_VERIFY_RECOVERY_CODE_ENDPOINT=/api/recovery/verify
+        MODE_ENV=
+        NEXTAUTH_SECRET=
+        NEXTAUTH_URL=http://localhost:3000/api/auth/
+        <!--AZURE EMAIL COMMUNICATION SERVICE-->
+        NEXT_PUBLIC_AZURE_EMAIL_STRING= # String endpoint proporcionado por azure
+        NEXT_PUBLIC_AZURE_EMAIL_SENDER= # Email sender proporcionado por azure
+        <!--GOOGLE SIGNIN PROVIDER--> # Credenciales de google para signin.
+        GOOGLE_CLIENT_ID=
+        GOOGLE_CLIENT_SECRET=
+        <!--Database credentials--> # Credenciales de la base de datos postgres
+        DB_NAME=
+        DB_DOMAIN=
+        DB_PORT=
+        DB_USER=
+        DB_PASSWORD=
      ```
 
 ## Ejecutar el Proyecto
